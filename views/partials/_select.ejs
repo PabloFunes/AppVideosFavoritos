@@ -1,0 +1,34 @@
+<div class="bg-succes row align-items-center justify-items-center vh-100">
+    <label for="exampleFormControlSelect1">Mostrar por categoría</label>
+    <select id="selectOptions" class="form-control"> 
+
+        <% if (data) { 
+            var opcionesFiltro=["Todas"];
+            for(var i = 0; i < opcionesList.length; i++) { 
+                opcionesFiltro.push(opcionesList[i].category);
+            } 
+            %>
+            <% for(var i = 0; i < opcionesFiltro.length; i++) { %>
+                <option> <%= opcionesFiltro[i]%> </option>
+            <% } %>
+        <% } %>
+    </select>
+    <br>
+    <button id="myButton" onclick="" class="btn btn-success"> 
+        Mostrar
+    </button>
+
+    <script type="text/javascript">
+        var selectOpciones = document.getElementById("selectOptions");
+        document.getElementById("myButton").onclick = function() {
+            if (selectOpciones.value == "Todas") { 
+                location.href = `http://localhost:3000/`;
+                //location.href =`https://videosfav.now.sh`;
+            } else { //si selecciona cualquier otra opcion
+                location.href = `http://localhost:3000/category/${selectOpciones.value}`;
+                //location.href = `https://videosfav.now.sh/category/${selectOpciones.value}`;
+            }
+        };
+    </script>
+
+</div>
